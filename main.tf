@@ -21,7 +21,6 @@ provider "oci" {
   private_key           = var.private_key
   fingerprint           = var.fingerprint
   region                = var.region
-  config_file_profile   = var.profile_name
 }
 
 resource "oci_core_vcn" "internal" {
