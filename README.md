@@ -20,7 +20,7 @@ Variable set for defined environment variables was created as [described on Terr
 One of the variables is fingerprint, which was created by command:
 
 ```
-openssl rsa -pubout -outform DER -in ~/.oci/oci_api_key.pem | openssl md5 -c
+openssl rsa -pubout -outform DER -in oci_private.pem | openssl md5 -c
 ```
 
 ## Provisioning
