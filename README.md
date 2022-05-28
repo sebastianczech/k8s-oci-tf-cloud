@@ -23,6 +23,14 @@ One of the variables is fingerprint, which was created by command:
 openssl rsa -pubout -outform DER -in oci_private.cer | openssl md5 -c
 ```
 
+While running plan, there was problem with private key. Following error message was displayed:
+
+```
+error: can not create client, bad configuration: did not find a proper configuration for private key
+```
+
+In environment variables in Terraform Cloud multi-line values cannot be stored (PEM key has many lines), so as suggested on discussion [Multi-line Variable problem](https://discuss.hashicorp.com/t/multi-line-variable-problem/10750), private key was removed from environment variables in Terraform Cloud and stored as sensitive Terraform variable. 
+
 ## Provisioning
 
 At first to verify authentication from Terraform code, it was created simple code as [described on Terraform tutorial for Oracle Cloud](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/oci-get-started).
