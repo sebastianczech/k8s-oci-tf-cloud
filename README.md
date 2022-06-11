@@ -1,6 +1,9 @@
 # k8s-oci-tf-cloud
 
-Infrastructure for Kubernetes provisioned in Oracle Cloud with the use of Terraform Cloud
+## About repository
+
+Infrastructure for Kubernetes provisioned in Oracle Cloud with the use of Terraform Cloud.
+Whole idea of repository is based on [k8s-oci](https://github.com/sebastianczech/k8s-oci), which is delivering code to setup Kubernetes cluster using tools on your local machine.
 
 ## Authentication
 
@@ -30,7 +33,3 @@ error: can not create client, bad configuration: did not find a proper configura
 ```
 
 In environment variables in Terraform Cloud multi-line values cannot be stored (PEM key has many lines), so as suggested on discussion [Multi-line Variable problem](https://discuss.hashicorp.com/t/multi-line-variable-problem/10750), private key was removed from environment variables in Terraform Cloud and stored as sensitive Terraform variable. 
-
-## Provisioning
-
-At first to verify authentication from Terraform code, it was created simple code as [described on Terraform tutorial for Oracle Cloud](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/oci-get-started).
