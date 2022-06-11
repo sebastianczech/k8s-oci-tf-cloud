@@ -6,6 +6,10 @@ variable "compartment_id" {
   type        = string
 }
 
+variable "my_public_ip" {
+  type        = string
+}
+
 variable "user_ocid" {
   type        = string
 }
