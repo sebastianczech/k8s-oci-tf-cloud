@@ -22,9 +22,10 @@ provider "oci" {
   region                = var.region
 }
 
-resource "oci_core_vcn" "internal" {
-  dns_label      = "internal"
-  cidr_block     = "172.16.0.0/20"
-  compartment_id = var.compartment_ocid
-  display_name   = "VNC TF Cloud"
+module "infra-k8s-oracle-cloud" {
+  source  = "sebastianczech/infra-k8s-oracle-cloud/oci"
+  version = "0.0.1"
+
+  compartment_id        = var.compartment_id
+  my_public_ip          = var.my_public_ip
 }
