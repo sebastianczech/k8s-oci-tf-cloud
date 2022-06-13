@@ -33,3 +33,9 @@ error: can not create client, bad configuration: did not find a proper configura
 ```
 
 In environment variables in Terraform Cloud multi-line values cannot be stored (PEM key has many lines), so as suggested on discussion [Multi-line Variable problem](https://discuss.hashicorp.com/t/multi-line-variable-problem/10750), private key was removed from environment variables in Terraform Cloud and stored as sensitive Terraform variable. 
+
+## Infrastructure
+
+Infrastructure provisioning is the same as in approach described in [k8s-oci](https://github.com/sebastianczech/k8s-oci/blob/main/README.md), where also Terraform was used to created all required objects in Oracle Cloud, besides 2 things:
+* Terraform state is no longer stored on local machine, but in Terraform Cloud
+* variables with sercet are defined in Terraform Cloud, not ``terraform.tfvars`` stored locally
