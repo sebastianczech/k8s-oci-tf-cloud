@@ -1,31 +1,31 @@
 variable "tenancy_ocid" {
-  type        = string
+  type = string
 }
 
 variable "compartment_id" {
-  type        = string
+  type = string
 }
 
 variable "my_public_ip" {
-  type        = string
+  type = string
 }
 
 variable "id_rsa_pub" {
-  type        = string
+  type = string
 }
 
 variable "user_ocid" {
-  type        = string
+  type = string
 }
 
 variable "private_key" {
-  type        = string
+  type = string
 }
 
 variable "fingerprint" {
-  type        = string
+  type = string
 }
 
 variable "region" {
-  type        = string
+  type = string
 }
