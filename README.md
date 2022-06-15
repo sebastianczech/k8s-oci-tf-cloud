@@ -39,3 +39,9 @@ In environment variables in Terraform Cloud multi-line values cannot be stored (
 Infrastructure provisioning is the same as in approach described in [k8s-oci](https://github.com/sebastianczech/k8s-oci/blob/main/README.md), where also Terraform was used to created all required objects in Oracle Cloud, besides 2 things:
 * Terraform state is no longer stored on local machine, but in Terraform Cloud
 * variables with sercet are defined in Terraform Cloud, not ``terraform.tfvars`` stored locally
+
+While applying changes, I had problem with state, so I was removing all objects from my state by command:
+
+```
+terraform state list | xargs -L 1 terraform state rm
+```
