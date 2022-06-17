@@ -31,3 +31,10 @@ module "infra-k8s-oracle-cloud" {
   my_public_ip   = var.my_public_ip
   id_rsa_pub     = var.id_rsa_pub
 }
+
+module "conf-k8s-oracle-cloud" {
+  source = "./modules/conf-k8s-oracle-cloud"
+
+  compute_instances = module.infra-k8s-oracle-cloud.compute_instances
+  id_rsa = var.id_rsa
+}
