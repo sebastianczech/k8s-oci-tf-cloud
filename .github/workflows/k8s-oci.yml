@@ -1,4 +1,4 @@
-name: 'Infrastructure'
+name: 'K8s OCI'
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Provision infrastructure'
+    name: 'IaaC'
     runs-on: ubuntu-latest
     environment: production
 
