@@ -36,5 +36,5 @@ module "conf-k8s-oracle-cloud" {
   source = "./modules/conf-k8s-oracle-cloud"
 
   compute_instances = module.infra-k8s-oracle-cloud.compute_instances
-  id_rsa = var.id_rsa
+  id_rsa            = var.id_rsa
 }

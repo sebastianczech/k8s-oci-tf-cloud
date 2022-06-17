@@ -3,5 +3,5 @@ variable "id_rsa" {
 }
 
 variable "compute_instances" {
-  type = map
+  type = map(any)
 }
