@@ -16,13 +16,17 @@ resource "null_resource" "worker_setup" {
 
   provisioner "remote-exec" { inline = ["echo 'Running worker init script on machine ${count.index} with IP ${self.triggers.public_ip}'"] }
 
-  provisioner "remote-exec" { inline = ["mkdir -p scripts"] }
+  # provisioner "remote-exec" { inline = ["mkdir -p scripts"] }
 
-  provisioner "file" {
-    content     = file("${path.module}/scripts/install.sh")
-    destination = "scripts/install.sh"
-  }
+  # provisioner "file" {
+  #   content     = file("${path.module}/scripts/install.sh")
+  #   destination = "scripts/install.sh"
+  # }
 
-  provisioner "remote-exec" { inline = ["chmod 0777 scripts/install.sh"] }
+  # provisioner "remote-exec" { inline = ["chmod 0777 scripts/install.sh"] }
+
+  # provisioner "remote-exec" { inline = ["scripts/install.sh"] }
+
+  provisioner "remote-exec" { inline = [file("${path.module}/scripts/install.sh")] }
 
 }
