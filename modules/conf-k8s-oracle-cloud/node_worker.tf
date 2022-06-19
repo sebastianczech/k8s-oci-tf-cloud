@@ -14,7 +14,7 @@ resource "null_resource" "worker_setup" {
     timeout     = "30s"
   }
 
-  provisioner "remote-exec" { inline = ["echo 'Running worker init script on machine ${count.index} with IP ${self.triggers.public_ip}'"] }
+  provisioner "remote-exec" { inline = ["echo 'Running worker init script on worker node ${count.index} with IP ${self.triggers.public_ip}'"] }
 
   # provisioner "remote-exec" { inline = ["mkdir -p scripts"] }
 
