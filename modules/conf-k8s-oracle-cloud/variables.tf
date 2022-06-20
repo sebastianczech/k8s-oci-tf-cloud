@@ -5,3 +5,7 @@ variable "id_rsa" {
 variable "compute_instances" {
   type = map(any)
 }
+
+variable "my_public_ip" {
+  type = string
+}

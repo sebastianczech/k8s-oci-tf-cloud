@@ -1,8 +1,8 @@
 resource "null_resource" "worker_setup" {
-  count = length(var.compute_instances.public_ip) > 1 ? length(var.compute_instances.public_ip)-1 : 0
+  count = length(var.compute_instances.public_ip) > 1 ? length(var.compute_instances.public_ip) - 1 : 0
 
   triggers = {
-    public_ip  = var.compute_instances.public_ip[count.index+1]
+    public_ip  = var.compute_instances.public_ip[count.index + 1]
     always_run = "${timestamp()}"
   }
 
