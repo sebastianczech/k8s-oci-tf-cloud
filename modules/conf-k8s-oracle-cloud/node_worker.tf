@@ -16,17 +16,16 @@ resource "null_resource" "worker_setup" {
 
   provisioner "remote-exec" { inline = ["echo 'Running worker init script on worker node ${count.index} with IP ${self.triggers.public_ip}'"] }
 
-  # provisioner "remote-exec" { inline = ["mkdir -p scripts"] }
-
-  # provisioner "file" {
-  #   content     = file("${path.module}/scripts/install.sh")
-  #   destination = "scripts/install.sh"
-  # }
-
-  # provisioner "remote-exec" { inline = ["chmod 0777 scripts/install.sh"] }
-
-  # provisioner "remote-exec" { inline = ["scripts/install.sh"] }
-
   provisioner "remote-exec" { inline = [file("${path.module}/scripts/install.sh")] }
+
+  provisioner "file" {
+    content = templatefile("${path.module}/files/rules.v4", {
+      my_public_ip = var.my_public_ip
+      subnet_cidr  = var.subnet_cidr
+    })
+    destination = "/tmp/rules.v4"
+  }
+
+  provisioner "remote-exec" { inline = ["sudo cp /tmp/rules.v4 /etc/iptables/rules.v4"] }
 
 }

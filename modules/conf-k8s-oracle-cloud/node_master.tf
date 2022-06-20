@@ -17,7 +17,10 @@ resource "null_resource" "master_setup" {
   provisioner "remote-exec" { inline = [file("${path.module}/scripts/install.sh")] }
 
   provisioner "file" {
-    content     = templatefile("${path.module}/files/rules.v4", { my_public_ip = var.my_public_ip })
+    content = templatefile("${path.module}/files/rules.v4", {
+      my_public_ip = var.my_public_ip
+      subnet_cidr  = var.subnet_cidr
+    })
     destination = "/tmp/rules.v4"
   }
 

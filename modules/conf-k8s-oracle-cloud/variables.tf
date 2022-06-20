@@ -9,3 +9,7 @@ variable "compute_instances" {
 variable "my_public_ip" {
   type = string
 }
+
+variable "subnet_cidr" {
+  type = string
+}
