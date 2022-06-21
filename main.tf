@@ -25,7 +25,7 @@ provider "oci" {
 
 module "infra-k8s-oracle-cloud" {
   source  = "sebastianczech/infra-k8s-oracle-cloud/oci"
-  version = "0.0.2"
+  version = "0.0.3"
 
   compartment_id = var.compartment_id
   my_public_ip   = var.my_public_ip
@@ -36,6 +36,7 @@ module "conf-k8s-oracle-cloud" {
   source = "./modules/conf-k8s-oracle-cloud"
 
   compute_instances = module.infra-k8s-oracle-cloud.compute_instances
+  lb_id             = module.infra-k8s-oracle-cloud.lb_id
   subnet_cidr       = module.infra-k8s-oracle-cloud.subnet_cidr
   my_public_ip      = var.my_public_ip
   id_rsa            = var.id_rsa

@@ -13,3 +13,7 @@ variable "my_public_ip" {
 variable "subnet_cidr" {
   type = string
 }
+
+variable "lb_id" {
+  type = string
+}
