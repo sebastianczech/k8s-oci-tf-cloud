@@ -26,4 +26,15 @@ resource "null_resource" "master_setup" {
 
   provisioner "remote-exec" { inline = ["sudo cp /tmp/rules.v4 /etc/iptables/rules.v4"] }
 
+  provisioner "file" {
+    content = templatefile("${path.module}/files/csr.conf.template", {
+      node_public_ip  = var.compute_instances.public_ip[0]
+      node_private_ip = var.compute_instances.private_ip[0]
+      lb_public_ip    = data.oci_network_load_balancer_network_load_balancer.k8s_network_load_balancer.ip_addresses[0].ip_address
+    })
+    destination = "/tmp/csr.conf.template"
+  }
+
+  provisioner "remote-exec" { inline = ["sudo cp /tmp/csr.conf.template /var/snap/microk8s/current/certs/csr.conf.template"] }
+
 }
