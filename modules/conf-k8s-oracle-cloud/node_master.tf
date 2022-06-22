@@ -37,4 +37,10 @@ resource "null_resource" "master_setup" {
 
   provisioner "remote-exec" { inline = ["sudo cp /tmp/csr.conf.template /var/snap/microk8s/current/certs/csr.conf.template"] }
 
+  provisioner "remote-exec" { inline = ["sudo microk8s refresh-certs --cert ca.crt --cert server.crt --cert front-proxy-client.crt"] }
+
+  provisioner "remote-exec" { inline = ["sudo usermod -a -G microk8s ubuntu"] }
+
+  provisioner "remote-exec" { inline = ["sudo shutdown -r now"] }
+
 }
