@@ -8,7 +8,8 @@ resource "time_sleep" "wait_60_seconds" {
     always_run = "${timestamp()}"
   }
 
-  create_duration = "60s"
+  # create_duration = "60s"
+  create_duration = "1s"
 }
 
 resource "null_resource" "k8s_cluster_setup" {
