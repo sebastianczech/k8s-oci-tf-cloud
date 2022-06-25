@@ -47,3 +47,8 @@ output "lb_public_ip" {
   description = "public IPs of LB"
   value       = module.infra-k8s-oracle-cloud.lb_public_ip
 }
+
+output "ip_address_of_joined_node" {
+  description = "public IPs of nodes which joined to cluster"
+  value       = module.conf-k8s-oracle-cloud.ip_address_of_joined_node
+}
