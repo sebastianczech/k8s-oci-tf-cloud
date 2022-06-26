@@ -13,6 +13,8 @@ resource "time_sleep" "wait_60_seconds" {
 }
 
 resource "null_resource" "k8s_cluster_setup" {
+  count = length(var.compute_instances.public_ip) > 1 ? length(var.compute_instances.public_ip) - 1 : 0
+
   depends_on = [
     time_sleep.wait_60_seconds
   ]
@@ -30,8 +32,22 @@ resource "null_resource" "k8s_cluster_setup" {
     timeout     = "30s"
   }
 
-  provisioner "remote-exec" { inline = ["echo 'Starting adding nodes to cluster, where master is node with IP ${self.triggers.public_ip}'"] }
+  provisioner "remote-exec" { inline = ["echo 'Starting adding node ${var.compute_instances.name[count.index + 1]} to cluster, where master is node with IP ${self.triggers.public_ip}'"] }
 
+  provisioner "file" {
+    content = templatefile("${path.module}/scripts/microk8s_join_token.sh", {
+      node_name = var.compute_instances.name[count.index + 1]
+    })
+
+    destination = "/tmp/join_${var.compute_instances.name[count.index + 1]}.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/join_${var.compute_instances.name[count.index + 1]}.sh",
+      "/tmp/join_${var.compute_instances.name[count.index + 1]}.sh",
+    ]
+  }
 }
 
 data "external" "join_node_to_cluster" {
