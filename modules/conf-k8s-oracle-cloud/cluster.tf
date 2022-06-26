@@ -47,5 +47,6 @@ data "external" "join_node_to_cluster" {
     master_public_ip = var.compute_instances.public_ip[0]
     worker_public_ip = var.compute_instances.public_ip[count.index + 1]
     worker_name      = var.compute_instances.name[count.index + 1]
+    private_key      = var.id_rsa
   }
 }
