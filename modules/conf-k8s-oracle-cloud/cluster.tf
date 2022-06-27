@@ -66,3 +66,41 @@ data "external" "join_node_to_cluster" {
     private_key      = var.id_rsa
   }
 }
+
+data "remote_file" "join_command_token" {
+  count = length(var.compute_instances.public_ip) > 1 ? length(var.compute_instances.public_ip) - 1 : 0
+
+  depends_on = [
+    null_resource.k8s_cluster_setup
+  ]
+
+  conn {
+    host        = var.compute_instances.public_ip[0]
+    user        = "ubuntu"
+    private_key = var.id_rsa
+  }
+
+  path = "/tmp/join_${var.compute_instances.name[count.index + 1]}.command"
+}
+
+resource "null_resource" "k8s_cluster_join" {
+  count = length(var.compute_instances.public_ip) > 1 ? length(var.compute_instances.public_ip) - 1 : 0
+
+  triggers = {
+    public_ip  = var.compute_instances.public_ip[count.index + 1]
+    always_run = "${timestamp()}"
+  }
+
+  connection {
+    type        = "ssh"
+    host        = self.triggers.public_ip
+    user        = "ubuntu"
+    private_key = var.id_rsa
+    timeout     = "30s"
+  }
+
+  provisioner "file" {
+    content     = data.remote_file.join_command_token[count.index].content
+    destination = "/tmp/join-token"
+  }
+}
