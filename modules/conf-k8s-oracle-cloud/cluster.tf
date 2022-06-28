@@ -101,6 +101,6 @@ resource "null_resource" "k8s_cluster_join" {
 
   provisioner "file" {
     content     = data.remote_file.join_command_token[count.index].content
-    destination = "/tmp/join-token"
+    destination = "/tmp/join-token.sh"
   }
 }
