@@ -103,4 +103,11 @@ resource "null_resource" "k8s_cluster_join" {
     content     = data.remote_file.join_command_token[count.index].content
     destination = "/tmp/join-token.sh"
   }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/join-token.sh",
+      "/tmp/join-token.sh",
+    ]
+  }
 }
