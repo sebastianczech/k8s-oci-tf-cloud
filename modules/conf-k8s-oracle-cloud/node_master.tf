@@ -1,7 +1,8 @@
 resource "null_resource" "master_setup" {
   triggers = {
-    public_ip  = var.compute_instances.public_ip[0]
-    always_run = "${timestamp()}"
+    public_ip = var.compute_instances.public_ip[0]
+    ### uncomment to always execute
+    # always_run = "${timestamp()}"
   }
 
   connection {

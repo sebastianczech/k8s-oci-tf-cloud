@@ -4,9 +4,10 @@ resource "time_sleep" "wait_60_seconds" {
     null_resource.worker_setup
   ]
 
-  triggers = {
-    always_run = "${timestamp()}"
-  }
+  ### uncomment to always execute
+  # triggers = {
+  #   always_run = "${timestamp()}"
+  # }
 
   ### change to lower value, if nodes are not restarted
   create_duration = "60s"

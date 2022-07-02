@@ -9,7 +9,7 @@ terraform {
 
   required_providers {
     oci = {
-      source  = "hashicorp/oci"
+      source = "hashicorp/oci"
       ### use to specify version of OCI provider
       # version = "<= 4.79.0"
     }
