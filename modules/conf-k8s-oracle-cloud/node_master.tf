@@ -41,6 +41,7 @@ resource "null_resource" "master_setup" {
 
   provisioner "remote-exec" { inline = ["sudo usermod -a -G microk8s ubuntu"] }
 
-  # provisioner "remote-exec" { inline = ["sudo shutdown -r now"] }
+  ### comment if you dont want to reboot machine
+  provisioner "remote-exec" { inline = ["sudo shutdown -r now"] }
 
 }
