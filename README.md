@@ -40,8 +40,6 @@ Infrastructure provisioning is the same as in approach described in [k8s-oci](ht
 * Terraform state is no longer stored on local machine, but in Terraform Cloud
 * variables with sercet are defined in Terraform Cloud, not ``terraform.tfvars`` stored locally
 
-While applying changes, I had problem with state, so I was removing all objects from my state by command:
+## Configuration
 
-```
-terraform state list | xargs -L 1 terraform state rm
-```
+...
