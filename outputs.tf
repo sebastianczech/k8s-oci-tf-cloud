@@ -52,3 +52,8 @@ output "ip_address_of_joined_node" {
   description = "public IPs of nodes which joined to cluster"
   value       = module.conf-k8s-oracle-cloud.ip_address_of_joined_node
 }
+
+output "instance_public_ips" {
+  description = "public IPs of nodes which joined to cluster"
+  value       = module.conf-k8s-oracle-cloud.instance_public_ips
+}
