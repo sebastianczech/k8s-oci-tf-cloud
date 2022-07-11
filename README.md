@@ -42,4 +42,14 @@ Infrastructure provisioning is the same as in approach described in [k8s-oci](ht
 
 ## Configuration
 
-...
+In [k8s-oci](https://github.com/sebastianczech/k8s-oci/blob/main/README.md) whole configuration of Kubernetes cluster was done using Ansible playbooks. In this repository it's done by module publish in [Terraform Registry](https://registry.terraform.io/modules/sebastianczech/conf-k8s-oracle-cloud/oci/latest), which is doing similar things but in different way.
+
+Most of the work is being done by resources of type ``null_resource`` with provisioners ``remote-exe`` or ``file``.
+
+In order to configure infrastructure, just run below commands (if only you have properly configure environment variables in Terraform Cloud):
+
+```bash
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
