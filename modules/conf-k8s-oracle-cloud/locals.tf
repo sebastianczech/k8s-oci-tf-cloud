@@ -1,3 +1,3 @@
 locals {
-  instance_public_ips = concat(data.external.join_node_to_cluster.*.result.public_ip_of_joined_node)
+  master_public_ip = var.compute_instances.public_ip[0]
 }

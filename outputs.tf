@@ -48,12 +48,12 @@ output "lb_public_ip" {
   value       = module.infra-k8s-oracle-cloud.lb_public_ip
 }
 
-output "ip_address_of_joined_node" {
-  description = "public IPs of nodes which joined to cluster"
-  value       = module.conf-k8s-oracle-cloud.ip_address_of_joined_node
+output "master_public_ip" {
+  description = "public IPs of master node"
+  value       = module.conf-k8s-oracle-cloud.master_public_ip
 }
 
-output "instance_public_ips" {
-  description = "public IPs of nodes which joined to cluster"
-  value       = module.conf-k8s-oracle-cloud.instance_public_ips
+output "microk8s_config" {
+  description = "kubectl configuration file"
+  value       = module.conf-k8s-oracle-cloud.microk8s_config
 }
