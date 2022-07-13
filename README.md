@@ -53,3 +53,11 @@ terraform init
 terraform plan
 terraform apply -auto-approve
 ```
+
+If you want to connect to microk8s cluster from your computer, you can use commands:
+
+```
+terraform output -raw microk8s_config_public > ~/.kube/microk8s.conf
+export KUBECONFIG=$KUBECONFIG:~/.kube/config:~/.kube/microk8s.conf
+kubectl get all --all-namespaces
+```

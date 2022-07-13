@@ -53,7 +53,12 @@ output "master_public_ip" {
   value       = module.conf-k8s-oracle-cloud.master_public_ip
 }
 
-output "microk8s_config" {
-  description = "kubectl configuration file"
-  value       = module.conf-k8s-oracle-cloud.microk8s_config
+output "microk8s_config_private" {
+  description = "kubectl configuration file with private IP"
+  value       = module.conf-k8s-oracle-cloud.microk8s_config_private
+}
+
+output "microk8s_config_public" {
+  description = "kubectl configuration file with public IP"
+  value       = module.conf-k8s-oracle-cloud.microk8s_config_public
 }
