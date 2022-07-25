@@ -28,9 +28,11 @@ module "infra-k8s-oracle-cloud" {
   source  = "sebastianczech/infra-k8s-oracle-cloud/oci"
   version = "0.0.5"
 
-  compartment_id = var.compartment_id
-  my_public_ip   = var.my_public_ip
-  id_rsa_pub     = var.id_rsa_pub
+  compartment_id         = var.compartment_id
+  my_public_ip           = var.my_public_ip
+  id_rsa_pub             = var.id_rsa_pub
+  ingress_security_rules = var.ingress_security_rules
+  egress_security_rules  = var.egress_security_rules
 }
 
 module "conf-k8s-oracle-cloud" {

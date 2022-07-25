@@ -33,3 +33,13 @@ variable "fingerprint" {
 variable "region" {
   type = string
 }
+
+variable "egress_security_rules" {
+  type    = list(map(string))
+  default = []
+}
+
+variable "ingress_security_rules" {
+  type    = list(map(string))
+  default = []
+}
