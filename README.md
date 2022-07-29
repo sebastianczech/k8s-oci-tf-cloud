@@ -61,3 +61,19 @@ terraform output -raw microk8s_config_public > ~/.kube/microk8s.conf
 export KUBECONFIG=$KUBECONFIG:~/.kube/config:~/.kube/microk8s.conf
 kubectl get all --all-namespaces
 ```
+
+## Tests
+
+Test are prepared using [Terratest](https://terratest.gruntwork.io/examples/). Before running tests for the first time, module needs to be initialized:
+
+```
+cd test
+go mod init github.com/sebastianczech/k8s-oci-tf-cloud/test
+go mod tidy
+```
+
+Next test can be executed by command:
+
+```
+go test -v -timeout 30m
+```
