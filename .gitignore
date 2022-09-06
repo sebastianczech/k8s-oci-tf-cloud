@@ -32,3 +32,4 @@ override.tf.json
 
 oci_private.cer
 oci_public.cer
+.external_modules
