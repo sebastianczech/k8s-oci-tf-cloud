@@ -5,6 +5,7 @@ check:
 	tflint .
 
 pre-commit:
+	# pre-commit autoupdate
 	pre-commit run --all-files
 
 plan:
