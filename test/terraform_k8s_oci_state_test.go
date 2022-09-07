@@ -71,11 +71,11 @@ func TestStateForK8sOciModule(t *testing.T) {
 	logger.Log(t, "K8sOciState: ", k8s)
 
 	// then
-	assert.Equal(t, "1.2.4", k8s.TerraformVersion)
+	assert.Equal(t, "1.2.8", k8s.TerraformVersion)
 	assert.Equal(t, "AVAILABLE", k8s.TerraformStateValues.TerraformStateOutputs.TerraformStateSubnet.Value)
 	assert.Equal(t, "AVAILABLE", k8s.TerraformStateValues.TerraformStateOutputs.TerraformStateVcn.Value)
 	assert.Equal(t, 2, len(k8s.TerraformStateValues.TerraformStateRootModule.TerraformStateChildModuleList))
 	assert.Equal(t, 16, len(k8s.TerraformStateValues.TerraformStateRootModule.TerraformStateChildModuleList[0].TerraformStateChildModuleResourceList))
-	assert.Equal(t, 24, len(k8s.TerraformStateValues.TerraformStateRootModule.TerraformStateChildModuleList[1].TerraformStateChildModuleResourceList))
+	assert.Equal(t, 30, len(k8s.TerraformStateValues.TerraformStateRootModule.TerraformStateChildModuleList[1].TerraformStateChildModuleResourceList))
 	assert.Contains(t, k8s.TerraformStateValues.TerraformStateRootModule.TerraformStateChildModuleList[1].TerraformStateChildModuleResourceList, loadBalancer)
 }
