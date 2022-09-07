@@ -32,7 +32,7 @@ While running plan, there was problem with private key. Following error message 
 error: can not create client, bad configuration: did not find a proper configuration for private key
 ```
 
-In environment variables in Terraform Cloud multi-line values cannot be stored (PEM key has many lines), so as suggested on discussion [Multi-line Variable problem](https://discuss.hashicorp.com/t/multi-line-variable-problem/10750), private key was removed from environment variables in Terraform Cloud and stored as sensitive Terraform variable. 
+In environment variables in Terraform Cloud multi-line values cannot be stored (PEM key has many lines), so as suggested on discussion [Multi-line Variable problem](https://discuss.hashicorp.com/t/multi-line-variable-problem/10750), private key was removed from environment variables in Terraform Cloud and stored as sensitive Terraform variable.
 
 ## Infrastructure
 
@@ -64,6 +64,34 @@ kubectl get all --all-namespaces
 
 ## Tests
 
+### Pre-commit
+
+Using [pre-commit](https://pre-commit.com/) there can be executed tests before every commit:
+
+```
+pre-commit run --all-files
+```
+
+which are using:
+* [terraform-docs](https://github.com/terraform-docs/terraform-docs), which can run locally using command: 
+```
+terraform-docs markdown table --output-file DOCS.md --output-mode inject .
+```
+* [tfsec](https://github.com/aquasecurity/tfsec), which can run locally using command:
+```
+tfsec .
+```
+* [tflint](https://github.com/terraform-linters/tflint), which can run locally using command:
+```
+tflint --loglevel=trace --module .
+```
+* [checkov](https://github.com/bridgecrewio/checkov), which can run locally using command:
+```
+checkov --directory . --quiet --download-external-modules sebastianczech/infra-k8s-oracle-cloud/oci:0.0.7
+```
+
+### Terratest
+
 Test are prepared using [Terratest](https://terratest.gruntwork.io/examples/). Before running tests for the first time, module needs to be initialized:
 
 ```
@@ -72,8 +100,8 @@ go mod init github.com/sebastianczech/k8s-oci-tf-cloud/test
 go mod tidy
 ```
 
-Next test can be executed by command:
+Next test can be executed by command (with ``-count=1`` to [disable caching](https://dev.to/mcaci/til-a-maybe-unexpected-usage-of-the-count-flag-in-go-tests-3dip)):
 
 ```
-go test -v -timeout 30m
+go test -v -timeout 30m -count=1
 ```
