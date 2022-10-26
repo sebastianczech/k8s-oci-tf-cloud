@@ -69,6 +69,7 @@ kubectl get all --all-namespaces
 Using [pre-commit](https://pre-commit.com/) there can be executed tests before every commit:
 
 ```
+pre-commit autoupdate
 pre-commit run --all-files
 ```
 

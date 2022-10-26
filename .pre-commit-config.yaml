@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.74.2 # version from https://github.com/antonbabenko/pre-commit-terraform/releases
+    rev: v1.76.0 # version from https://github.com/antonbabenko/pre-commit-terraform/releases
     hooks:
       - id: terraform_fmt
         args: [
@@ -11,14 +11,18 @@ repos:
       - id: terraform_docs
       - id: terraform_tflint
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.1.192' # version from https://github.com/bridgecrewio/checkov/releases
+    rev: '2.2.0' # version from https://github.com/bridgecrewio/checkov/releases
     hooks:
     - id: checkov
       verbose: true
-      args: 
+      args:
         - '--download-external-modules'
         - 'sebastianczech/infra-k8s-oracle-cloud/oci:0.0.7'
         - '--compact'
         - '--quiet'
         - '--soft-fail'
-        
+  - repo: https://github.com/tenable/terrascan
+    rev: v1.16.0
+    hooks:
+      - id: terraform-pre-commit
+        args: [ '-i terraform' ]
