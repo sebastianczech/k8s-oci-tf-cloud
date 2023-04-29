@@ -25,8 +25,7 @@ provider "oci" {
 }
 
 module "infra-k8s-oracle-cloud" {
-  source  = "sebastianczech/infra-k8s-oracle-cloud/oci"
-  version = "0.0.7"
+  source = "./modules/infra-k8s-oracle-cloud"
 
   compartment_id         = var.compartment_id
   my_public_ip           = var.my_public_ip
