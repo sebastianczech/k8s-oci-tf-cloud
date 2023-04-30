@@ -6,6 +6,7 @@ module "infra-k8s-oracle-cloud" {
   id_rsa_pub             = var.id_rsa_pub
   ingress_security_rules = var.ingress_security_rules
   egress_security_rules  = var.egress_security_rules
+  instance_count         = var.instance_count
 }
 
 module "conf-k8s-oracle-cloud" {

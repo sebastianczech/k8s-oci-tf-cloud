@@ -34,6 +34,10 @@ variable "region" {
   type = string
 }
 
+variable "instance_count" {
+  type = number
+}
+
 variable "egress_security_rules" {
   type    = list(map(string))
   default = []
