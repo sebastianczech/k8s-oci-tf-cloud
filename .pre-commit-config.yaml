@@ -1,17 +1,16 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.76.0 # version from https://github.com/antonbabenko/pre-commit-terraform/releases
+    rev: v1.78.0
     hooks:
       - id: terraform_fmt
         args: [
-          --args=-check,
           --args=-recursive
           ]
       - id: terraform_tfsec
       - id: terraform_docs
       - id: terraform_tflint
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.2.0' # version from https://github.com/bridgecrewio/checkov/releases
+    rev: '2.3.212'
     hooks:
     - id: checkov
       verbose: true
@@ -22,7 +21,7 @@ repos:
         - '--quiet'
         - '--soft-fail'
   - repo: https://github.com/tenable/terrascan
-    rev: v1.16.0
+    rev: v1.18.1
     hooks:
       - id: terraform-pre-commit
         args: [ '-i terraform' ]
