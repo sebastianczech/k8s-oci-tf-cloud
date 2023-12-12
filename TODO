@@ -1,0 +1,9 @@
+- remove local terraform.tfvars
+- update UX of README, make it more clear and shorter
+- upgrade Kubernetes version
+- upgrade Terraform version 
+- upgrade OCI provider
+- rebuild modules to have more flexibility and less single variables, more objects
+- upgrade Terratest or use terraform test
+- fix lint issues
+- upgrade my own 2 TF modules in TF registry
