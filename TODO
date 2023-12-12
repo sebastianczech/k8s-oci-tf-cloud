@@ -1,4 +1,5 @@
-- remove local terraform.tfvars
+- fix issues with no capacity in some AZs
+- remove local terraform.tfvars or rename to example.tfvars
 - update UX of README, make it more clear and shorter
 - upgrade Kubernetes version
 - upgrade Terraform version 
