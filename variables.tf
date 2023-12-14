@@ -38,6 +38,10 @@ variable "instance_count" {
   type = number
 }
 
+variable "availability_domains" {
+  type        = list(number)
+}
+
 variable "egress_security_rules" {
   type    = list(map(string))
   default = []

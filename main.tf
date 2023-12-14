@@ -7,6 +7,7 @@ module "infra-k8s-oracle-cloud" {
   ingress_security_rules = var.ingress_security_rules
   egress_security_rules  = var.egress_security_rules
   instance_count         = var.instance_count
+  availability_domains   = var.availability_domains
 }
 
 module "conf-k8s-oracle-cloud" {
