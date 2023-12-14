@@ -39,7 +39,7 @@ variable "instance_count" {
 }
 
 variable "availability_domains" {
-  type        = list(number)
+  type = list(number)
 }
 
 variable "egress_security_rules" {
