@@ -6,5 +6,5 @@
 - upgrade OCI provider
 - rebuild modules to have more flexibility and less single variables, more objects
 - upgrade Terratest or use terraform test
-- fix lint issues
+- fix lint issues (tflint --recursive)
 - upgrade my own 2 TF modules in TF registry
