@@ -1,7 +1,6 @@
 - fix issues with linter (GitHub actions)
 - remove local terraform.tfvars or rename to example.tfvars
 - update UX of README, make it more clear and shorter
-- upgrade Kubernetes version
 - upgrade Terraform version 
 - upgrade OCI provider
 - rebuild modules to have more flexibility and less single variables, more objects
