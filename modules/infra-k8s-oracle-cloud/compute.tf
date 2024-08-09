@@ -25,7 +25,7 @@ resource "oci_core_instance" "k8s_node" {
   }
   shape_config {
     baseline_ocpu_utilization = "BASELINE_1_1"
-    memory_in_gbs             = 6
+    memory_in_gbs             = 1
     ocpus                     = 1
   }
   preserve_boot_volume = false
