@@ -13,6 +13,8 @@ module "infra-k8s-oracle-cloud" {
 module "conf-k8s-oracle-cloud" {
   source = "./modules/conf-k8s-oracle-cloud"
 
+  # count = lookup(module.infra-k8s-oracle-cloud, "compute_instances", null) != null ? 1 : 0
+
   compute_instances = module.infra-k8s-oracle-cloud.compute_instances
   lb_id             = module.infra-k8s-oracle-cloud.lb_id
   subnet_cidr       = module.infra-k8s-oracle-cloud.subnet_cidr

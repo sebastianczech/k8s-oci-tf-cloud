@@ -43,6 +43,11 @@ output "compute_instances" {
   description = "names and IPs of created instances"
 }
 
+output "compute_image" {
+  description = "image used for compute instances"
+  value       = module.infra-k8s-oracle-cloud.oci_ubuntu_images
+}
+
 output "lb_public_ip" {
   description = "public IPs of LB"
   value       = module.infra-k8s-oracle-cloud.lb_public_ip
@@ -50,15 +55,15 @@ output "lb_public_ip" {
 
 output "master_public_ip" {
   description = "public IPs of master node"
-  value       = module.conf-k8s-oracle-cloud.master_public_ip
+  value       = try(module.conf-k8s-oracle-cloud.master_public_ip, null)
 }
 
 output "microk8s_config_private" {
   description = "kubectl configuration file with private IP"
-  value       = module.conf-k8s-oracle-cloud.microk8s_config_private
+  value       = try(module.conf-k8s-oracle-cloud.microk8s_config_private, null)
 }
 
 output "microk8s_config_public" {
   description = "kubectl configuration file with public IP"
-  value       = module.conf-k8s-oracle-cloud.microk8s_config_public
+  value       = try(module.conf-k8s-oracle-cloud.microk8s_config_public, null)
 }
